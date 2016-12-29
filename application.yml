@@ -1,0 +1,26 @@
+eureka:
+  client:
+    serviceUrl:
+       defaultZone: http://localhost:8900/registry/eureka
+
+
+---
+spring.profiles: dev
+
+# set up shorter refresh time during development
+eureka:
+  client.initialInstanceInfoReplicationIntervalSeconds: 5
+  instance:
+    registryFetchIntervalSeconds: 1
+    leaseRenewalIntervalInSeconds: 2
+    leaseExpirationDurationInSeconds: 5
+ribbon.ServerListRefreshInterval: 1000
+
+
+---
+spring.profiles: logging
+
+logging:
+  level:
+    com.netflix: DEBUG
+    org.springframework.cloud: DEBUG
